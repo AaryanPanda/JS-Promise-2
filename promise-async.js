@@ -19,3 +19,35 @@ const newCookie = {name:"Biscotti Cookies"};
 
 // calling the new async function
 
+
+function getCookies(){
+   var output = ""
+   setTimeout(() => {
+     cookies.forEach((Element) => {
+       output += `<li>${Element.name}</li>`
+     })
+     document.body.innerHTML = output
+   })
+ }
+ 
+ function createCookie(newCookie){
+   return new Promise((resolve,reject) => {
+     setTimeout(() => {
+       cookies.push(newCookie)
+       const con = false
+ 
+       if (!con){
+         resolve()
+       }else{
+         reject()
+       }
+     },2000)
+   })
+ }
+
+ async function callFun(){
+    await createCookie(newCookie)
+    getCookies()
+ }
+
+ callFun()
